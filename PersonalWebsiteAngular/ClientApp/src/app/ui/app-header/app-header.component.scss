@@ -1,0 +1,52 @@
+.pageTitle {
+  display:inline-flex;
+  flex-grow:1;
+}
+
+#bar {
+  display: inline-flex;
+  color: white;
+  height: 100%;
+  padding: 10px;
+  background-color: black;
+  width: 100%;
+  background: linear-gradient(-50deg, rgb(67,67,67), rgb(21,21,21));
+}
+
+.thumbnail {
+  padding: 0 15px;
+  height: 100%;
+
+  div {
+    border: 2px white solid;
+    border-radius: 200px;
+    height: 90%;
+  }
+
+  img {
+    height: 100%;
+    border-radius: 200px;
+    border: solid 3px black;
+  }
+}
+
+.pageTitleText {
+  margin: auto 0;
+
+  .name {
+    font-size: 40px;
+    margin-top: -10px;
+  }
+
+  .degree {
+    text-align: right;
+    margin-top: -7px;
+    margin-right: -15px;
+  }
+}
+
+.description {
+  width: 285px;
+  text-align: right;
+  margin: auto 0;
+}

@@ -1,0 +1,24 @@
+#listParent, #main {
+  display: inline-flex;
+}
+
+#main, #content, #listParent, #article {
+  width: 100%;
+}
+
+#sidebar {
+  position: absolute;
+}
+
+#article article {
+  border-style: solid !important;
+  overflow-y: scroll !important;
+  border: solid black !important;
+  border-width: 2px 0px 0px 2px !important;
+  height: 100% !important;
+  border-radius: 10px 0 0 0 !important;
+}
+
+.hideMobile {
+
+}

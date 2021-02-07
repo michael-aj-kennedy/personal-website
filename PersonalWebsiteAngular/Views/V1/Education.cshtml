@@ -1,0 +1,12 @@
+﻿@model PersonalWebsiteAngular.Models.CV
+
+@foreach (var education in Model.Education)
+{
+    <div style="margin:10px 15px;">
+        <div style="margin-bottom:5px; white-space:nowrap;">
+            <span class="bio-heading">@education.Year.ToString()</span>
+            <span class="bio-item-name">@Html.Raw(education.Name)</span>                            
+        </div>
+        <div class="bio-item-details">@Html.Raw(education.Details)</div>
+    </div>
+}

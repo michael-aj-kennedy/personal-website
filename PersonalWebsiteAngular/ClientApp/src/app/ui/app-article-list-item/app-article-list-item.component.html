@@ -1,0 +1,25 @@
+<div>
+  <div class="articleHeader">
+    <i *ngIf="article.pinned" class="fal fa-thumbtack"></i>
+    <div style="width:100%;">
+      <span style="flex-grow:1; margin-right:15px;">
+        <span style="flex-grow:1;">{{article.title}} {{article.text}}</span>
+        <span *ngIf="article.hasSubTitle" style="margin-right:15px;"> – {{article.subtitle}}</span>
+      </span>
+      <span style="text-align:right; float:right;"><span *ngIf="article.isBlogEntry">Posted&nbsp;</span>{{article.date}}</span>
+    </div>
+  </div>
+  <div class="articleSummary" [innerHtml]="article.summary"></div>
+  <div class="articleIcons">
+    <i *ngIf="article.hasContent" class="fal fa-chevron-double-right"></i>
+    <i *ngIf="article.isUrl" class="fal fa-external-link"></i>
+  </div>
+</div>
+              
+
+<!--id: number;
+date: string;
+type: string;
+pinned: boolean;
+hasContent: boolean;
+isUrl: boolean;-->

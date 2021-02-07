@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Michael Kennedy - @ViewBag.Title</title>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"></script>
+        <script src="https://gromo.github.io/jquery.scrollbar/jquery.scrollbar.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+        <script src="~/js/v1.min.js"></script>
+        <link rel="stylesheet" href="~/css/v1.min.css">
+    </head>
+    <body>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56743116-2"></script>
+        <script>setupAnalytics();</script>
+
+        <div id="contentMain" style="font-size:16px;">
+            <div class="contentImage hideMobile" style="border-right:2px solid white;">
+                <div style="border-right:2px solid black; height:100%;">
+                    <img src="@Url.Content("~/content/images/background/1.jpg")" />
+                </div>
+            </div>
+            @Html.Partial("AboutMe")
+            <div class="contentMain">
+                <div style="background:linear-gradient(-50deg, rgb(67,67,67), rgb(21,21,21)); font-size:110%; font-variant:small-caps; color:white; border-bottom:solid 2px black; left: -5px; margin-right: -5px; position:relative;">
+                    <div style="padding:8px;">
+                        <span>
+                            <span style="padding:10px;">
+                                <span style="padding-right:25px; border-right:solid 1px white;">
+                                    <span style="">
+                                        <a href="@Url.Content("~/")" style="color:white !important;">Home</a>
+                                    </span>
+                                </span>
+                            </span>
+                            <span style="padding:10px;">
+                                <span style="padding-right:25px; padding-left:8px; border-right:solid 1px white;">
+                                    <span style="">
+                                        <a href="@Url.Content("~/v1")" style="color:white !important;">Blog</a>
+                                    </span>
+                                </span>
+                            </span>
+                            <span style="padding:10px;">
+                                <span style="">
+                                    <a href="@Url.Content("~/v1/Cv")" style="color:white !important;">Experience</a>
+                                </span>
+                            </span>
+                        </span>
+                        <span class="hideMobile" style="float:right;">
+                            <span style="padding:10px;">
+                                <span style="">
+                                    <span data-target="mailto:email@mikekennedy.co.uk" data-socialLink="Email" class="socialLink fas fa-at" style="font-size: 13px; position: relative; top: -4px;"></span>
+                                </span>
+                            </span>
+
+                            <span style="padding:10px;">
+                                <span style="">
+                                    <span data-target="https://twitter.com/MikeKennedyDev" data-socialLink="Twitter" class="socialLink fab fa-twitter-square"></span>
+                                </span>
+                            </span>
+
+                            <span style="padding:10px;">
+                                <span style="">
+                                    <span data-target="https://www.linkedin.com/in/michael-aj-kennedy/" data-socialLink="LinkedIn" class="socialLink fab fa-linkedin"></span>
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                    <div style="width: 100%; height: 2px; background-color: white; top: 2px; left: 1px; position: relative;"></div>                    
+                </div>
+                <div style="width: 100%;height: 2px;background-color: black;"></div>
+
+                @RenderBody()
+            </div>
+            <div id="contentExtended" state="hidden" style="right: -35%; border-left:solid 2px black; text-align:justify;">
+                <div class="expandableSection mkContent">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            if ($(window).width() <= 600) {
+                $("#contentExtended").css("right", "-100%");
+            }
+        </script>
+    </body>
+</html>

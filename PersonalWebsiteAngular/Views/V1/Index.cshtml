@@ -1,0 +1,42 @@
+﻿@model PersonalWebsiteAngular.Models.CV
+
+@{
+    var location = "Experience";
+    ViewBag.Title = "Experience";
+}
+
+<div class="content-main-scroll scrollbar-inner">
+    <div style="padding-bottom:50px;">
+        <div style="position: fixed; width: 100%; top: 47px;">
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgb(143,145,145);"></div>
+            <div class="contentMain-header" style="z-index:1;">Professional Experience</div>                
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgba(0,0,0,.15);"></div>
+        </div>
+        <div id="professionalExperience" style="margin:10px 15px; padding-top:48px; padding-right: 10px;">
+            @Html.Partial("Experience", Model)
+        </div>
+        <div style="z-index:2; position:absolute; width:100%;">
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgb(143,145,145);"></div>
+            <div class="contentMain-header pinnable">Education and Training</div>                
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgba(0,0,0,.15);"></div>
+        </div>
+        <div class="pinnableContent" style="padding-top:46px; padding-right: 10px;">
+            @Html.Partial("Education", Model)
+        </div>
+
+        <div style="z-index:3; position:absolute; width:100%;">
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgb(143,145,145);"></div>
+            <div class="contentMain-header pinnable">Technical Skills</div>                
+            <div style="margin:0px; font-weight:bold; border-bottom:solid 1px rgba(0,0,0,.15);"></div>
+        </div>
+        <div class="pinnableContent" style="padding-top:46px; padding-right: 10px;">
+            @Html.Partial("Skills", Model)
+        </div>
+    </div>
+</div>
+
+<script>
+
+    recordPage("@(location)")
+
+</script>
