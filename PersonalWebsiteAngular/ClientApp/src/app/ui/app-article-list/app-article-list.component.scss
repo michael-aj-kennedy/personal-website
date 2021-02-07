@@ -1,0 +1,43 @@
+#list .scrollbar-inner {
+  height: 100% !important;
+}
+
+.copyright {
+  margin-bottom: 20px;
+  font-size: 11px;
+
+  a {
+    color: white !important;
+  }
+}
+
+#list {
+  width: 650px;
+  height: 100%;
+  min-width: 550px !important;
+  max-width: 550px !important;
+  overflow-y: hidden;
+
+  .scrollbar-inner {
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 60px;
+    color: white;
+    background-color: black;
+    background: linear-gradient(-50deg, rgb(67,67,67), rgb(21,21,21));
+  }
+
+  .selectable-items {
+    margin-right: 20px;
+
+    .selectable-item {
+      border-radius: 5px;
+      margin-bottom: 20px;
+
+      .list-item {
+        padding: 10px 20px;
+        padding-bottom: 25px !important;
+      }
+    }
+  }
+}

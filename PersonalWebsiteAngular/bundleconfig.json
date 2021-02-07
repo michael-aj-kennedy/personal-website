@@ -1,0 +1,46 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/v1.min.css",
+    "inputFiles": [
+      "wwwroot/css/v1/bootstrap.css",
+      "wwwroot/css/v1/bootstrap-theme.css",
+      "wwwroot/css/v1/mk.css",
+      "wwwroot/css/v1/scrollbar.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/v1.min.js",
+    "inputFiles": [
+      "wwwroot/js/v1/bootstrap.js",
+      "wwwroot/js/v1/mk.js",
+      "wwwroot/js/v1/modernizr-2.8.3.js",
+      "wwwroot/js/ga.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/v2.min.css",
+    "inputFiles": [
+      "wwwroot/css/v2/mk.css",
+      "wwwroot/css/v2/fontawesome/all.min.css",
+      "wwwroot/css/v2/fontawesome/v4-shims.min.css",
+      "wwwroot/css/v2/scrollbar.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/v2.min.js",
+    "inputFiles": [
+      "wwwroot/js/ga.js",
+      "wwwroot/js/v2/mk.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

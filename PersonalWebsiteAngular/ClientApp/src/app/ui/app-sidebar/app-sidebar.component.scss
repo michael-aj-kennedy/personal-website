@@ -1,0 +1,28 @@
+#sidebar {
+  height: 45px;
+  width: 100vh;
+  transform-origin: left top;
+  transform: rotate( -90deg) translateX(-100%);
+
+  .navbar-nav {
+    flex-direction: row-reverse !important;
+  }
+
+  .selectable-items li {
+    border-top: none !important;
+    border-right: none !important;
+  }
+
+  .selectable-items li a {
+    padding: 8px 20px;
+  }
+
+  .selectable-items li:first-child {
+    border-radius: 0 0 10px 0;
+    border-right: solid 1px #d1d5d5;
+  }
+
+  .selectable-items li:last-child {
+    border-radius: 0 0 0 10px;
+  }
+}

@@ -1,0 +1,68 @@
+﻿<div class="contentBar" style="background:linear-gradient(-50deg, rgb(67,67,67), black); border-right:2px solid white;">
+    <div style="margin-bottom: 15%;">
+        <div style="width:75%; margin: 0 12.5%; ">
+            <div style="border:white 3px solid; -ms-transform:rotate(45deg); transform: rotate(45deg); overflow:hidden; width: 60%; margin-top: 20%; margin-left: 20%;">
+                <div style="margin: 100%;">             
+                    <img style="width: 150%; height: 150%; transform: rotate(-45deg); -ms-transform:rotate(-45deg); position: absolute; top: -25%; left: -25%;" src="@Url.Content("~/content/images/mk.jpg")" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bio">
+        <div style="text-align: center; font-size:110%; font-variant:small-caps;">𝕄𝕚𝕔𝕙𝕒𝕖𝕝 𝕂𝕖𝕟𝕟𝕖𝕕𝕪</div>
+        <div style="text-align: center; font-size:75%; margin-top:5px; font-variant:small-caps;">Software Developer</div>
+        <div style="font-size:50%;display:flex; padding: 10px 20%;">
+            <div style="border-top:1px solid white;height: 1px;width:50%;display: block; margin-top: 5px;"></div>
+            <div class="far fa-circle" style="padding:0px 10px"></div>
+            <div style="border-top:1px solid white; height:1px; width:50%; display: block; margin-top: 5px;"></div>
+        </div>
+        <div class="bio-experience hide900" style="font-family: Calibri, Arial; text-align: center; font-size:80%; margin-top:5px; padding:0px 20px;">Experienced full-stack software developer with 10 years experience of windows and web programming techniques, including C#, MVC, SQL and Data Migration</div>
+        <div class="hide900" style="font-size:50%;display:flex; padding: 10px 20%;">
+            <div style="border-top:1px solid white;height: 1px;width:50%;display: block; margin-top: 5px;"></div>
+            <div class="far fa-circle" style="padding:0px 10px"></div>
+            <div style="border-top:1px solid white; height:1px; width:50%; display: block; margin-top: 5px;"></div>
+        </div>
+        <div class="bio-quote" style="font-family: Calibri, Arial; text-align: center; font-size:80%; margin-top:5px; padding:0px 20px;">
+            <div style="font-size:85%;">
+                Family is the most important thing in the world; we’ve been on the wrong side of heartbreak too many times, but it's that experience that gives us the strength and determination to strive to do better every day.
+            </div>
+            <div style="font-size:50%;display:flex; padding: 10px 20%;">
+                <div style="border-top:1px solid white;height: 1px;width:50%;display: block; margin-top: 5px;"></div>
+                <div class="far fa-circle" style="padding:0px 10px"></div>
+                <div style="border-top:1px solid white; height:1px; width:50%; display: block; margin-top: 5px;"></div>
+            </div>
+        </div>
+
+        <div id="bio-contact-std" style="bottom:15px; position: fixed; width: 18%; font-family: Calibri, Arial; text-align: center; font-size:80%; margin-top:5px; padding:0px 20px;">
+            <div class="hideMobile hide1000">
+                <div>a: <a href="@("https://www.google.co.uk/maps/place/Farnborough+GU14/@51.2936049,-0.8106042")" style="color:white;" target="_blank">Farnborough, Hampshire, UK</a></div>
+            </div>
+            <div class="hideMobile hide1000" style="font-size:50%;display:flex; padding: 10px 20%;">
+                <div style="border-top:1px solid white;height: 1px;width:50%;display: block; margin-top: 5px;"></div>
+                <div class="far fa-circle" style="padding:0px 10px"></div>
+                <div style="border-top:1px solid white; height:1px; width:50%; display: block; margin-top: 5px;"></div>
+            </div>
+            <div><span class="far fa-copyright" style="font-size:75%; margin-right:5px;"></span><span class="bio-copyright">Michael Kennedy</span></div>
+        </div>
+        <div id="bio-contact-small" style="bottom:15px; position: fixed; width: 16%; font-family: Calibri, Arial; text-align: center; font-size:80%; margin-top:5px; padding:0px 20px;">
+            <span class="first" style="padding-left:0px;"><a title="email@mikekennedy.uk" href="mailto:email@mikekennedy.uk" style="color:white; font-size:80%; text-decoration: none" target="_blank" class="fas fa-at">&nbsp;</a></span>
+            <span><a title="Farnborough, Hampshire, UK" href="@("https://www.google.co.uk/maps/place/Farnborough+GU14/@51.2936049,-0.8106042")" class="fa fa-home" style="color:white; font-size:80%; text-decoration: none" target="_blank">&nbsp;</a></span>
+            <span><a title="mikekennedy.co.uk" href="http://www.mikekennedy.co.uk" style="color:white; text-decoration: none" target="_blank">www</a></span>                        
+            <span class="far fa-copyright bio-copyright-small" style="font-size:75%; text-decoration: none">&nbsp;</span>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function setAboutMe() {
+        $("#bio-contact-std").width($(".bio-quote").width());
+    }
+
+    $(window).resize(function () {
+        setAboutMe();
+    });
+
+    setAboutMe();
+
+</script>

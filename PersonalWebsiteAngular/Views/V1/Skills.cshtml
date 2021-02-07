@@ -1,0 +1,11 @@
+﻿@model PersonalWebsiteAngular.Models.CV
+
+@foreach (var skill in Model.Skills)
+{
+    <div style="margin:10px 15px;">
+        <div style="margin-bottom:5px; white-space:nowrap;">
+            <span class="bio-heading">@Html.Raw(skill.Name)</span>
+        </div>
+        <div class="bio-item-details">@Html.Raw(skill.Details)</div>
+    </div>
+}

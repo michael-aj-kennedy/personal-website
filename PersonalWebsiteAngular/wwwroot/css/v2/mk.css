@@ -1,0 +1,79 @@
+﻿.selectable-items li {
+    background-color: rgb(250,250,250);
+    border: solid 1px #d1d5d5;
+}
+
+.vertical-scroll .scrollbar-inner {
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+}
+
+.vertical-scroll .scroll-y {
+    margin-right: 4px !important;
+}
+
+#article .scroll-y {
+    margin-top: 4px !important;
+}
+
+.article-content-parent,
+.article-header-text,
+.article-header-image  {
+    display: block;
+}
+
+.education-year, .education-desc {
+    vertical-align:top !important;
+}
+
+.education-desc {
+    padding-left: 20px !important;
+}
+
+.education-year,
+.education-item {
+    margin-bottom: 0 !important;
+    font-weight: 600 !important;
+}
+
+.education-details {
+    font-size:90% !important;
+}
+
+#article .scroll-bar {
+    background-color: rgba(57,57,57, .6) !important;
+}
+
+#article .scroll-bar:hover {
+    background-color: rgba(57,57,57, 1) !important;
+}
+
+
+.article-header:not(.page-header), .experience-header {
+    padding: 10px 20px;
+    font-size: 120%;
+    font-weight: 600;
+    margin: 20px -20px;
+    background-color: rgba(230, 230, 230, .3);
+    border-bottom: solid 1px rgb(230, 230, 230);
+}
+
+.article-header:not(.page-header) p, .experience-header p {
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.article-content-parent,
+.article-header-text,
+.article-header-image,
+.article-content img {
+    max-width: 850px;
+    width: 100%;
+    margin: auto;
+}
+
+.article-content .entry-content {
+    max-width: 850px !important;
+    margin: auto !important;
+}

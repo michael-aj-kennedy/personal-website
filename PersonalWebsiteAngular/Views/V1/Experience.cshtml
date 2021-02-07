@@ -1,0 +1,33 @@
+﻿@model PersonalWebsiteAngular.Models.CV
+
+@{
+    var prevCompanyName = "";
+}
+
+@for (int i = 0; i < Model.Experience.Count; i++)
+{
+    var item = Model.Experience[i];
+    var expandable = item.ExperienceInfos.Count > 0;
+    var companyName = item.Company;
+
+    if (!string.IsNullOrWhiteSpace(item.Company))
+    {
+        prevCompanyName = item.Company;
+
+        <div>
+            <span style="font-size:105%; font-variant:small-caps; font-weight:bold;">@Html.Raw(item.Company)</span>
+        </div>
+    }
+
+    <div style="margin-bottom:15px;">
+        <div class="@(expandable ? "expandable" : "")" expandable="exItem@(i)" data-target="@Url.Action("ExperienceItem", "Cv", new { id = item.Id })" style="margin-bottom:5px; padding:2px 5px 5px 5px;">
+            <div style="margin-bottom:5px;">
+                <span class="bio-heading">@Html.Raw(item.Date)</span>
+                <span class="bio-item-name" style="margin-left:0;"><span class="showMobile"><br></span>@Html.Raw(item.Title)</span>                        
+            </div>
+            <div class="bio-item-details">
+                @Html.Raw(item.Details)
+            </div>
+        </div>                        
+    </div>
+}

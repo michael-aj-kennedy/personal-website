@@ -1,0 +1,90 @@
+﻿@model PersonalWebsite.Data.Models.Experience
+
+@{ 
+    var location = "Experience/" + Model.Company + "/" + Model.Title;
+}
+
+<div class="expandableContentItem">
+    <div style="border-left:solid 2px white;">
+        <div style="border-left:solid 2px black;">
+            <div style="margin:0px; margin-left:0px; font-weight:bold; border-bottom:solid 1px rgb(143,145,145);"></div>
+            <div class="expandableSection-header" style="font-size:19px;">
+                <div class="btnBack" onclick="hideSection()" style="padding-right:10px;">
+                    <i class="far fa-arrow-alt-circle-left"></i>
+                </div>
+                <div>
+                    <div class="expandableSection-header-name">@(Model.Company)</div>
+                    <span style="font-size: 70%; font-weight: normal; left: 60px; top: 29px; font-style: italic; font-variant-caps: normal;position: absolute;">@(Model.Title)</span>
+                </div>
+            </div>
+            <div style="margin:0px;margin-left:0px; font-weight:bold; border-bottom:solid 1px rgba(0,0,0,.15);"></div>
+        </div>
+    </div>
+
+    <div style="border-left:solid 2px white;">
+        <div style="border-left:solid 2px black;">
+            <div class="scrollbar-inner" style="padding:10px;font-size: 90%; overflow-x:hidden !important;">
+                <div class="expandableSection-details">
+
+                    @for (int j = 0; j < Model.ExperienceInfos.Count; j++)
+                    {
+                        var subItem = Model.ExperienceInfos.ToArray()[j];
+
+                        if (!string.IsNullOrWhiteSpace(subItem.Title))
+                        {
+                            <div style="z-index:2; position:absolute; width:100%;">
+                                <div style="margin:0px; margin-left:-15px; font-weight:bold; border-bottom:solid 1px rgb(143,145,145);"></div>
+                                <div class="expandableSection-header" style="margin-left:-15px;">
+                                    <div class="btnBack" onclick="hideSection()" style="padding-right:10px; visibility:hidden;">
+                                        <i class="far fa-arrow-alt-circle-left"></i>
+                                    </div>
+                                    <div>
+                                        <div class="expandableSection-name" style="margin-left:8px;">@(subItem.Title)</div>
+                                    </div>
+                                </div>
+                                <div style="margin:0px;margin-left:-15px; font-weight:bold; border-bottom:solid 1px rgba(0,0,0,.15);"></div>
+                            </div>
+                        }
+
+                        <div style="padding-bottom:5px; padding-right:15px;">
+                            @if (j != 0)
+                            {
+                                @:<br/><br/><br/>
+                            }
+
+                            @Html.Raw(subItem.Details)
+                            <br/><br/>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="expandableSection-footer" style="bottom:-4px; background: linear-gradient(-50deg, rgb(67,67,67), black); color:white;">
+        <div style="padding:10px;">
+            <div><span>@Html.Raw(Model.Company)</span></div>
+            <div style="font-size:80%;">@Html.Raw(Model.CompanyLine)</div>
+        </div>
+        <div style="font-size:80%; display: inline-flex; width: 100%;">
+            <iframe src="@Html.Raw(Model.CompanyLocation)" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>                    
+    </div>
+</div>
+
+<script>
+    
+    resize();
+    adjustContentHeaders();
+    adjustSubHeaders();
+    adjustExpandedSectionHeight();
+    $('.scrollbar-inner').scrollbar();
+
+    $(".expandableSection .scrollbar-inner").scroll(function () {
+        adjustSubHeaders();
+    });
+
+    recordPage("@(location)");
+
+</script>

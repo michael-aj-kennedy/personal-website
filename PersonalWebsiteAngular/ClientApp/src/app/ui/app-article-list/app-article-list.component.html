@@ -1,0 +1,25 @@
+<div id="list" class="vertical-scroll">
+  <div class="content-main-scroll scrollbar-inner">        
+    <ul class="navbar-nav flex-grow selectable-items">
+      <li *ngFor="let article of articles;"
+          class="nav-item selectable-item">
+
+        <a *ngIf="article.modeArticle"
+           class="nav-link text-dark list-item"
+           [routerLink]="['/articles', article.type == undefined || article.type == 'undefined' ? 'blog' : article.type, article.name]">
+          <app-article-list-item [article]="article"></app-article-list-item>
+        </a>
+
+        <div *ngIf="article.modeNoContent" class="nav-link text-dark list-item">
+          <app-article-list-item [article]="article"></app-article-list-item>
+        </div>
+
+        <a *ngIf="article.modeUrl" href="article.content" target="_blank">
+          <app-article-list-item [article]="article"></app-article-list-item>
+        </a>
+      </li>
+    </ul>
+
+    <div class="copyright"><i class="fal fa-copyright"></i> {{year}} <a href="mailto:email@mikekennedy.co.uk">Michael Kennedy</a></div>
+  </div>
+</div>
