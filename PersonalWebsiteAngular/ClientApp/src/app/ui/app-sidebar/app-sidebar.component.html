@@ -1,18 +1,17 @@
 <div id="sidebar">
   <ul class="navbar-nav flex-grow selectable-items">
     <li *ngFor="let itemType of itemTypes;"
-        class="nav-item selectable-item">
+        class="nav-item selectable-item"
+        [class.selected]="itemType.selected">
 
       <a class="nav-link text-dark"
+         (click)="showSidebar(itemType.type)"
           [routerLink]="['/', itemType.type]"
           [routerLinkActive]="['link-active']"
-          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLinkActiveOptions]="{ exact: false }"          
+          [attr.data-article-type]="itemType.type"
+          [attr.data-article-source]="itemType.source"
           >{{itemType.name}}</a>
-                      <!--data-type="{{itemType.type}}"
-        data-source="{{itemType.source}}"
-        data-defaultId="{{itemType.defaultId}}"
-        data-selected="{{itemType.selected}}"-->
-
     </li>
   </ul>
 </div>

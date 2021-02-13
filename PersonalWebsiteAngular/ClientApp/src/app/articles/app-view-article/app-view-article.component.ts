@@ -8,13 +8,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app-view-article.component.scss']
 })
 export class AppViewArticleComponent implements OnInit {
-  
-  //private properties
-  /*private httpClient: HttpClient;
-  private base: string;
-  private firstNavigate = true;
-  private activeMenu = "";
-  private currentRoute = "";*/
 
   //public properties
   private _type = "";
@@ -45,7 +38,7 @@ export class AppViewArticleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.articleType = null;
       this.articleId = null;
-
+      
       this.articleType = params == null || params.type == null || params.type == "undefined" || params.type == "" ? "blog" : params.type;
       this.articleId = params == null || params.id == null ? "" : params.id;
     });

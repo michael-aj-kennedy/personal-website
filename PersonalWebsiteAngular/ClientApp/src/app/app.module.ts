@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatRippleModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -43,30 +44,22 @@ import { AppArticleListItemComponent } from './ui/app-article-list-item/app-arti
     AppArticleListItemComponent
   ],
   imports: [
+    MatRippleModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: AppViewAboutComponent, pathMatch: 'full' },  //about
       { path: 'about', component: AppViewAboutComponent },                //about
-      { path: 'About', component: AppViewAboutComponent },                //about
+      { path: 'About', redirectTo: 'about' },                             //about
       { path: 'blog', component: AppViewArticleComponent },               //blog with first article
-      { path: 'Blog', component: AppViewArticleComponent },               //blog with first article
+      { path: 'Blog', redirectTo: 'blog' },                               //blog with first article
       { path: 'blog/entry/:id', component: AppViewArticleComponent },     //blog with first article
-      { path: 'Blog/entry/:id', component: AppViewArticleComponent },     //blog with first article
-      { path: 'cv', component: AppViewCvComponent },                        //cv with most recent item
-      { path: 'Cv', component: AppViewCvComponent },                        //cv with most recent item
-      //{ path: 'cv:id', component: HomeComponent },              //cv article
-      { path: 'articles/:type', component: AppViewArticleComponent },       //specified article list
-      { path: 'articles/:type/:id', component: AppViewArticleComponent },   //specified article
-
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },      
-      //<root>
-      //about
-      //blog/entry/:id
-      //article/:id
-      //cv
+      { path: 'Blog/entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
+      { path: 'cv', component: AppViewCvComponent },                      //cv with most recent item
+      { path: 'Cv', redirectTo: 'cv' },                                   //cv with most recent item
+      { path: 'articles/:type', component: AppViewArticleComponent },     //specified article list
+      { path: 'articles/:type/:id', component: AppViewArticleComponent }, //specified article
       //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
     ])
   ],

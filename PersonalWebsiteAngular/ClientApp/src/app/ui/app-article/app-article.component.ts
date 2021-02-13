@@ -88,7 +88,7 @@ export class AppArticleComponent implements OnInit {
   }
 
   @Input() get accentColour(): string {
-    let returnData = "rgb(230, 230, 230)";
+    let returnData = "rgb(235, 235, 235)";
 
     if (this.article != null && this.article.accentColour != null && this.article.accentColour != "") {
       returnData = this.article.accentColour;

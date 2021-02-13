@@ -5,6 +5,7 @@ import { Education } from './education';
 
 export class Article {
   id: number;
+  fullId: string;
   date: string;
   type: string;
   name: string;
@@ -25,4 +26,5 @@ export class Article {
   modeUrl: boolean;
   modeArticle: boolean;
   modeNoContent: boolean;
+  selected: boolean;
 }

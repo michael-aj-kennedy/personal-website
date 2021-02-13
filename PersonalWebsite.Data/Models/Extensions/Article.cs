@@ -8,6 +8,33 @@ namespace PersonalWebsite.Data.Models
     public class Article
     {
         public int Id { get; set; }
+
+        public string FullId
+        {
+            get
+            {
+                if (Type == "cv" || Type == "experience")
+                {
+                    if (Title.Equals("education", StringComparison.InvariantCultureIgnoreCase) || Id == -1)
+                    {
+                        return "education";
+                    }
+                    else
+                    {
+                        return (Title + " " + Subtitle).ToLower().Replace(" ", "-");
+                    }
+                }
+                else if (Type.Equals("about", StringComparison.InvariantCultureIgnoreCase) || Id == -1)
+                {
+                    return "about";
+                }
+                else
+                {
+                    return Title.ToLower().Replace(" ", "-");
+                }
+            }
+        }
+
         public string Date { get; set; }
 
         private string _type = "";

@@ -2,7 +2,11 @@
   <div class="content-main-scroll scrollbar-inner">        
     <ul class="navbar-nav flex-grow selectable-items">
       <li *ngFor="let article of articles;"
-          class="nav-item selectable-item">
+          class="nav-item selectable-item"
+          (click)="setSelectedArticle(article.fullId, true)"
+          [class.selected]="article.selected"
+          [attr.data-article-id]="article.id"
+          [attr.data-article-full-id]="article.fullId">
 
         <a *ngIf="article.modeArticle"
            class="nav-link text-dark list-item"

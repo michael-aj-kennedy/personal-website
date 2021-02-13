@@ -1,18 +1,18 @@
-<div id="main" style="position: absolute; height: 100%; width: 100%;">
+<div id="main" style="position: absolute; height: 100%; width: 100%;" [class.forceSidebar]="forceSidebar">
   <app-primary-image style="width: 15%; height:100%;"></app-primary-image>
   <div id="content" style="display: grid;grid-template-rows: 120px auto;">
     <app-header style="display: block;"></app-header>
     <div id="listParent" style=" overflow: hidden;">
-      <app-article-list [articles]="articles" [activeMenu]="activeMenu"></app-article-list>
-      <app-sidebar [itemTypes]="itemTypes" style="position: fixed;width: 0;"></app-sidebar>
-      <app-contact-methods></app-contact-methods>
+      <app-article-list [articles]="articles" [activeMenu]="activeMenu" [activeArticleId]="activeArticleId" (updateSidebarVisibility)="updateSidebarVisibility($event)"></app-article-list>
+      <app-sidebar [itemTypes]="itemTypes" (updateSidebarVisibility)="updateSidebarVisibility($event)" style="position: fixed;width: 0; z-index:50;"></app-sidebar>      
       <div id="article" style="background-color:black;">
         <div class="vertical-scroll" style="border: solid white; border-width: 2px 0px 0px 2px; height: 100%; background-color: rgb(250,250,250); border-radius: 10px 0 0 0; ">
           <article class="content-main-scroll scrollbar-inner" style="overflow-y: scroll; border: solid black;border-width: 2px 0px 0px 2px;height: 100%;border-radius: 10px 0 0 0;">
             <router-outlet (activate)="routeActivated($event)"></router-outlet>
           </article>
+          <app-contact-methods></app-contact-methods>
         </div>
-      </div>
+      </div>      
     </div>
   </div>
 </div>

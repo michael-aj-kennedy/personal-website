@@ -1,18 +1,20 @@
 <header id="bar">
-  <div class="pageTitle">    
-    <div class="thumbnail hideMobile">
-        <div>
-          <a [routerLink]="['/']">
-            <img src="/content/images/mk2.jpg">
-          </a>
-        </div>
-    </div>
-    <div class="pageTitleText">
-      <div class="name"><a [routerLink]="['/']" style="color:white; text-decoration:none;">Michael Kennedy</a></div>
-      <div class="degree hideMobile"><a [routerLink]="['/']" style="color:white; text-decoration:none;">BSc (hons)</a></div>
-    </div>
+  <div class="thumbnail hideMobile">
+      <div>
+        <a [routerLink]="['/']">
+          <img src="/content/images/mk2.jpg">
+        </a>
+      </div>
   </div>
-  <div class="description">
-    Senior full-stack software developer with {{yearsExperience}} years experience
+  <div id="title">
+    <div class="pageTitle">    
+      <div class="pageTitleText">
+        <div class="name"><a [routerLink]="['/']" style="color:white; text-decoration:none;">Michael Kennedy</a></div>
+        <div class="degree hideMobile"><a [routerLink]="['/']" style="color:white; text-decoration:none;">BSc (hons)</a></div>
+      </div>
+    </div>
+    <div class="description">
+      Senior full-stack software developer with {{yearsExperience}} years experience
+    </div>
   </div>
 </header>

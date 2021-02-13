@@ -1,11 +1,13 @@
 <div>
   <div class='article-header page-header' [style.background-color]="accentColour" [style.border-bottom-color]="titleTextColour">
-    <span class="article-header-text" style="flex-grow: 1; padding-left:5px;" [style.color]="titleTextColour">
-      <span style="flex-grow:1;">{{title}}</span>
-      <span *ngIf="hasSubTitle" style="margin-right:15px;"> – {{subTitle}}</span>
-    </span>
+    <div>
+      <span class="article-header-text" style="flex-grow: 1; padding-left:70px;" [style.color]="titleTextColour">
+        <span style="flex-grow:1;">{{title}}</span>
+        <span *ngIf="hasSubTitle" style="margin-right:15px;"> – {{subTitle}}</span>
+      </span>
+    </div>
   </div>
-  <div style="padding:0 80px;">
+  <div class="article-data" style="padding:0 80px;">
     <div *ngIf="hasHeaderImage">
       <img class="article-header-image" src="../../{{headerImage}}" style="margin-bottom:20px; border:solid 1px;" [style.border-color]="accentColour" />
     </div>
