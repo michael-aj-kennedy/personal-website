@@ -1,4 +1,12 @@
-﻿.selectable-items li {
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.selectable-items li {
     background-color: rgb(250,250,250);
     border: solid 1px #d1d5d5;
 }

@@ -59,8 +59,15 @@ export class AppComponent implements OnInit {
     this._forceSidebar = val;
   }
 
+  private _message: string;
+  @Input() get message(): string {
+    return this._message;
+  }
+  set message(val: string) {
+    this._message = val;
+  }
+
   updateSidebarVisibility(val: boolean) {
-    console.log(val);
     this.forceSidebar = val;
   }
 
@@ -69,8 +76,9 @@ export class AppComponent implements OnInit {
     this.base = baseUrl;
 
     //get menu items
-    this.httpClient.get<PageInfo>(this.base + 'api/v2/Menu').subscribe(result => {
+    this.httpClient.get<PageInfo>('api/v2/Menu').subscribe(result => {
       this.itemTypes = result.menuItems;
+      this.message = result.exception;
     }, error => console.error(error));
   }
 
@@ -79,19 +87,26 @@ export class AppComponent implements OnInit {
     let articleId = "-1";
     const componentName = e.constructor.name;
 
-    if (componentName === "AppViewCvComponent") {
-      menuItem = "cv";
-      articleId = e.route.params.value.id;
+    if (e != null && e.route != null && e.route.params != null) {
+      let articleType = "blog";
+      if (e.articleType != null) {
+        articleType = e.articleType;
+      }
+
+      if (componentName === "AppViewCvComponent" || articleType === "cv") {
+        menuItem = "cv";
+        articleId = e.route.params.value.id;
+      }
+      else if (componentName === "AppViewAboutComponent" || articleType === "about") {
+        menuItem = "about";
+        articleId = "-1";
+      }
+      else {
+        menuItem = e.route.params.value.type;
+        articleId = e.route.params.value.id;
+      }
     }
-    else if (componentName === "AppViewArticleComponent") {
-      menuItem = e.route.params.value.type;
-      articleId = e.route.params.value.id;
-    }
-    else if (componentName === "AppViewAboutComponent") {
-      menuItem = "about";
-      articleId = "-1";
-    }   
-    
+
     this.activeArticleId = articleId;
 
     if (menuItem !== this.activeMenu) {
@@ -99,7 +114,7 @@ export class AppComponent implements OnInit {
       this.setSelectedMenuItem();
 
       //get article list
-      this.httpClient.get<Article[]>(this.base + 'api/v2/Articles?itemType=' + this.activeMenu).subscribe(result => {
+      this.httpClient.get<Article[]>('api/v2/Articles?itemType=' + this.activeMenu).subscribe(result => {
         this.articles = result;
       }, error => console.error(error));
     }

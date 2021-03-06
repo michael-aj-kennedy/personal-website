@@ -29,7 +29,8 @@
       "wwwroot/css/v2/media.css",
       "wwwroot/css/v2/fontawesome/all.min.css",
       "wwwroot/css/v2/fontawesome/v4-shims.min.css",
-      "wwwroot/css/v2/scrollbar.css"
+      "wwwroot/css/v2/scrollbar.css",
+      "wwwroot/css/v2/modern-normalize.css"
     ]
   },
   {

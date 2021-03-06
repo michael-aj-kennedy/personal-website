@@ -5,10 +5,10 @@
         [class.selected]="itemType.selected">
 
       <a class="nav-link text-dark"
-         (click)="showSidebar(itemType.type)"
+          (click)="showSidebar(itemType.type)"
           [routerLink]="['/', itemType.type]"
           [routerLinkActive]="['link-active']"
-          [routerLinkActiveOptions]="{ exact: false }"          
+          [routerLinkActiveOptions]="{ exact: false }"
           [attr.data-article-type]="itemType.type"
           [attr.data-article-source]="itemType.source"
           >{{itemType.name}}</a>

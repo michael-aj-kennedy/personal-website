@@ -3,7 +3,7 @@
     <i *ngIf="article.pinned" class="fal fa-thumbtack"></i>
     <div style="width:100%;">
       <span style="flex-grow:1; margin-right:15px;">
-        <span style="flex-grow:1;">{{article.title}} {{article.text}}</span>
+        <span style="flex-grow:1;">{{article.title}}</span>
         <span *ngIf="article.hasSubTitle" style="margin-right:15px;"> – {{article.subtitle}}</span>
       </span>
       <span style="text-align:right; float:right;"><span *ngIf="article.isBlogEntry">Posted&nbsp;</span>{{article.date}}</span>

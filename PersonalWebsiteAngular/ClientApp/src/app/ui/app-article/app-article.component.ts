@@ -114,8 +114,15 @@ export class AppArticleComponent implements OnInit {
   
   loadArticle() {
     if (this.articleSource != null && this.articleType != null && this.articleId != null) {
+      const postData = {
+        Referrer: document.referrer,
+        Url: document.location.href,
+        PageHeight: window.innerHeight,
+        PageWidth:window.innerWidth
+      };
+
       //get article
-      this.httpClient.get<Article>(this.base + 'api/v2/Article?itemType=' + this.articleType + "&articleId=" + this.articleId).subscribe(result => {
+      this.httpClient.post<Article>('api/v2/Article?itemType=' + this.articleType + "&articleId=" + this.articleId, postData).subscribe(result => {
         this.article = result;
         $("#article .content-main-scroll").scrollTop(0);
 

@@ -36,6 +36,9 @@ namespace PersonalWebsite.Data.Models
         public virtual DbSet<ExperienceInfo> ExperienceInfos { get; set; }
         public virtual DbSet<PersistedGrant> PersistedGrants { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<UserActivity> UserActivity { get; set; }
+        public virtual DbSet<UserAS> UserAS { get; set; }
+        public virtual DbSet<UserGeo> UserGeo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -362,6 +365,90 @@ namespace PersonalWebsite.Data.Models
                 entity.Property(e => e.Name)
                     .IsUnicode(false)
                     .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<UserActivity>(entity =>
+            {
+                entity.ToTable("UserActivity");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Dt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dt");
+
+                entity.Property(e => e.AsId).HasColumnName("asId");
+
+                entity.Property(e => e.GeoId).HasColumnName("geoId");
+
+                entity.Property(e => e.ArticleId).HasColumnName("articleId");
+
+                entity.Property(e => e.ArticleTitle)
+                    .IsUnicode(true)
+                    .HasColumnName("articleTitle");
+
+                entity.Property(e => e.ArticleSubTitle)
+                    .IsUnicode(true)
+                    .HasColumnName("articleSubTitle");
+
+                entity.Property(e => e.IsBot)
+                    .HasColumnName("isBot");
+
+                entity.Property(e => e.LanguageInfo)
+                    .IsUnicode(true)
+                    .HasColumnName("languageInfo");
+
+                entity.Property(e => e.Referrer)
+                    .IsUnicode(true)
+                    .HasColumnName("referrer");
+
+                entity.Property(e => e.SourceUrl)
+                    .IsUnicode(true)
+                    .HasColumnName("sourceUrl");
+
+                entity.Property(e => e.PageHeight).HasColumnName("pageHeight");
+
+                entity.Property(e => e.PageWidth).HasColumnName("pageWidth");
+            });
+
+            modelBuilder.Entity<UserAS>(entity =>
+            {
+                entity.ToTable("UserAS");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Dt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dt");
+
+                entity.Property(e => e.Uas)
+                    .IsUnicode(true)
+                    .HasMaxLength(2000)
+                    .HasColumnName("uas");
+
+                entity.Property(e => e.Response)
+                    .IsUnicode(true)
+                    .HasColumnName("response");
+            });
+
+            modelBuilder.Entity<UserGeo>(entity =>
+            {
+                entity.ToTable("UserGeo");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Dt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("dt");
+
+                entity.Property(e => e.Identifier)
+                    .IsUnicode(true)
+                    .HasMaxLength(2000)
+                    .HasColumnName("identifier");
+
+                entity.Property(e => e.Response)
+                    .IsUnicode(true)
+                    .HasColumnName("response");
             });
 
             OnModelCreatingPartial(modelBuilder);

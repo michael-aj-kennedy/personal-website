@@ -77,11 +77,7 @@
 
 <script>
 
-    @{ 
-    #if !DEBUG
-        @:ga('send', 'pageview', "@location");
-    #endif
-    }
+    ga('send', 'pageview', "@(location)");   
 
     function setBlogEntry() {
         $("#crossPostData").width($(".pinnableContent").parent().width() - 25);

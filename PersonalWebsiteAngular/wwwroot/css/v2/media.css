@@ -154,7 +154,6 @@
     #main.forceSidebar app-article-list {
         display: block !important;
         z-index: 2;
-        position: absolute;
         height: 100%;
         background-color: rgba(250,250,250,.8);
     }

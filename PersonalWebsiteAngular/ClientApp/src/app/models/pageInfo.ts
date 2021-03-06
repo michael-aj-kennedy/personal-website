@@ -7,4 +7,5 @@ export class PageInfo {
   menuItems: ItemType[] = [];
   articles: Article[] = [];
   article: Article;
+  exception: string;
 }

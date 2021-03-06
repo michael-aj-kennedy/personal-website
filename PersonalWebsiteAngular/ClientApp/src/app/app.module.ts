@@ -55,7 +55,9 @@ import { AppArticleListItemComponent } from './ui/app-article-list-item/app-arti
       { path: 'blog', component: AppViewArticleComponent },               //blog with first article
       { path: 'Blog', redirectTo: 'blog' },                               //blog with first article
       { path: 'blog/entry/:id', component: AppViewArticleComponent },     //blog with first article
+      { path: 'blog/Entry/:id', redirectTo: 'articles/blog/:id' },     //blog with first article
       { path: 'Blog/entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
+      { path: 'Blog/Entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
       { path: 'cv', component: AppViewCvComponent },                      //cv with most recent item
       { path: 'Cv', redirectTo: 'cv' },                                   //cv with most recent item
       { path: 'articles/:type', component: AppViewArticleComponent },     //specified article list

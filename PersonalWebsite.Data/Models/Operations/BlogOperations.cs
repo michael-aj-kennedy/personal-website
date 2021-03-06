@@ -1,14 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
+using UAParser;
 
 namespace PersonalWebsite.Data.Models.Operations
 {
     public static class BlogOperations
     {
+        private static readonly HttpClient client = new HttpClient();
+
         public static List<ExperienceInfo> GetExperienceInfo(int experienceId)
         {
             var returnData = new List<ExperienceInfo>();
@@ -479,6 +487,142 @@ namespace PersonalWebsite.Data.Models.Operations
                         })
                         .FirstOrDefault();
                 }
+            }
+
+            return returnData;
+        }
+
+        public static UserActivity LogVisit(int articleId, string title, string subtitle, UserInfo userInfo, BrowserInfo browserInfo)
+        {
+            UserActivity returnData = null;
+
+            using (var context = new BlogContext())
+            {
+                var searchDate = DateTime.UtcNow.AddDays(-1);
+
+                //lookup hashed ip address - where it was created in the last 7 days
+                var userGeo = context.UserGeo
+                    .OrderByDescending(g => g.Id)
+                    .FirstOrDefault(g =>
+                        g.Identifier.ToLower() == userInfo.IpHash.ToLower() &&
+                        g.Dt > searchDate
+                    );
+
+                //ip location info
+                if (userGeo == null)
+                {
+                    var userGeoResponse = "";
+                    var userGeoError = "";
+                    
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(userInfo.IpAddress))
+                        {
+                            var url = $"http://ip-api.com/json/{userInfo.IpAddress}?fields=status,message,continent,country,regionName,city,district,zip,isp,org,mobile,proxy&lang=en";
+
+                            var wrGETURL = WebRequest.Create(url);
+
+#if !DEBUG
+                            wrGETURL.Proxy = new WebProxy("winproxy.server.lan", 3128);
+#endif
+
+                            var objStream = wrGETURL.GetResponse().GetResponseStream();
+                            var objReader = new StreamReader(objStream);
+                            userGeoResponse = objReader.ReadToEnd();
+
+                            userInfo.IpInfo = JsonConvert.DeserializeObject<IpInfo>(userGeoResponse);
+                        }
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        userGeoError = ex.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        userGeoError = ex.ToString();
+                    }
+
+                    userGeo = context.UserGeo.Add(new UserGeo()
+                    {
+                        Dt = DateTime.UtcNow,
+                        Identifier = userInfo.IpHash,
+                        Response = string.IsNullOrWhiteSpace(userGeoError) ? userGeoResponse : userGeoError
+                    }).Entity;
+
+                    context.SaveChanges();
+                }
+
+                //lookup UAS info - where it was created in the last 7 days
+                var userAS = context.UserAS
+                    .OrderByDescending(g => g.Id)
+                    .FirstOrDefault(u =>
+                        u.Uas.ToLower() == userInfo.UAS.ToLower() &&
+                        u.Dt > searchDate
+                    );
+
+                //uas service
+                if (userAS == null)
+                {
+                    var ipInfoResponse = "";
+                    var ipInfoError = "";
+
+                    try
+                    {
+                        if (!string.IsNullOrWhiteSpace(userInfo.IpAddress))
+                        {
+                            var accessKey = "3016574d2e1b6e7b19b29d83b054f8ac";
+                            var includeFields = "type,os,device,browser";
+                            var url = $"http://api.userstack.com/detect?access_key={accessKey}&ua={userInfo.UAS}&format=1&fields={includeFields}";
+
+                            var wrGETURL = WebRequest.Create(url);
+
+#if !DEBUG
+                            wrGETURL.Proxy = new WebProxy("winproxy.server.lan", 3128);
+#endif
+
+                            var objStream = wrGETURL.GetResponse().GetResponseStream();
+                            var objReader = new StreamReader(objStream);
+                            ipInfoResponse = objReader.ReadToEnd();
+
+                            userInfo.AgentInfo = JsonConvert.DeserializeObject<AgentInfo>(ipInfoResponse);
+                        }
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        ipInfoError = ex.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        ipInfoError = ex.ToString();
+                    }
+
+                    userAS = context.UserAS.Add(new UserAS()
+                    {
+                        Dt = DateTime.UtcNow,
+                        Uas = userInfo.UAS.ToLower(),
+                        Response = string.IsNullOrWhiteSpace(ipInfoError) ? ipInfoResponse : ipInfoError
+                    }).Entity;
+
+                    context.SaveChanges();
+                }
+
+                context.UserActivity.Add(new UserActivity()
+                {
+                    ArticleId = articleId,
+                    ArticleTitle = title,
+                    ArticleSubTitle = subtitle,
+                    Dt = DateTime.UtcNow,
+                    AsId = userAS != null ? userAS.Id : 0,
+                    GeoId = userGeo != null ? userGeo.Id : 0,
+                    IsBot = userInfo.IsBot,
+                    LanguageInfo = userInfo.Language,
+                    Referrer = browserInfo.Referrer,
+                    SourceUrl = browserInfo.Url,
+                    PageHeight = browserInfo.PageHeight,
+                    PageWidth = browserInfo.PageWidth
+                });
+
+                context.SaveChanges();
             }
 
             return returnData;

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PersonalWebsiteAngular.Models
+namespace PersonalWebsite.Data.Models
 {
-    public class PageInfo
+    public class TabInfo
     {
         public List<ItemType> MenuItems { get; set; }
         public List<Article> Articles { get; set; }
         public Article Article { get; set; }
+        public string Exception { get; set; }
     }
 }
