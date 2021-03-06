@@ -47,6 +47,7 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\app\articles\app-view-about\" />
     <Folder Include="ClientApp\src\app\articles\app-view-article\" />
+    <Folder Include="ClientApp\src\app\articles\app-page-not-found\" />
     <Folder Include="ClientApp\src\app\ui\app-header\" />
     <Folder Include="ClientApp\src\app\ui\app-primary-image\" />
     <Folder Include="ClientApp\src\app\ui\app-article\" />

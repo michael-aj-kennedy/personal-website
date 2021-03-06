@@ -22,6 +22,7 @@ import { AppViewCvComponent } from './articles/app-view-cv/app-view-cv.component
 import { AppArticleListComponent } from './ui/app-article-list/app-article-list.component';
 import { BindCssVariableDirective } from './core/bind-css-variable.directive';
 import { AppArticleListItemComponent } from './ui/app-article-list-item/app-article-list-item.component';
+import { AppPageNotFoundComponent } from './articles/app-page-not-found/app-page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AppArticleListItemComponent } from './ui/app-article-list-item/app-arti
     AppViewCvComponent,
     AppArticleListComponent,
     BindCssVariableDirective,
-    AppArticleListItemComponent
+    AppArticleListItemComponent,
+    AppPageNotFoundComponent
   ],
   imports: [
     MatRippleModule,
@@ -55,14 +57,14 @@ import { AppArticleListItemComponent } from './ui/app-article-list-item/app-arti
       { path: 'blog', component: AppViewArticleComponent },               //blog with first article
       { path: 'Blog', redirectTo: 'blog' },                               //blog with first article
       { path: 'blog/entry/:id', component: AppViewArticleComponent },     //blog with first article
-      { path: 'blog/Entry/:id', redirectTo: 'articles/blog/:id' },     //blog with first article
+      { path: 'blog/Entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
       { path: 'Blog/entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
       { path: 'Blog/Entry/:id', redirectTo: 'articles/blog/:id' },        //blog with first article
       { path: 'cv', component: AppViewCvComponent },                      //cv with most recent item
       { path: 'Cv', redirectTo: 'cv' },                                   //cv with most recent item
       { path: 'articles/:type', component: AppViewArticleComponent },     //specified article list
       { path: 'articles/:type/:id', component: AppViewArticleComponent }, //specified article
-      //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
+      { path: '**', component: AppPageNotFoundComponent },                //Wildcard route for a 404 page
     ])
   ],
   providers: [],
